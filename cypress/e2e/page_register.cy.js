@@ -45,7 +45,8 @@ describe('page register', () => {
         registerData.email = random+'@gmail.com'
         registerPage.inputPassword(random)
         registerData.password = random
-        registerPage.inputConfirmPassword(registerData.confirmPassword)
+        registerPage.inputConfirmPassword(random)
+        registerData.confirmPassword = random
         registerPage.clickRegisterButton()
         cy.verifyByClass('.result','Your registration completed')
         cy.clickMenuHeader('.ico-logout')
