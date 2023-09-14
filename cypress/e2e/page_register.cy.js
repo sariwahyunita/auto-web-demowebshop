@@ -6,7 +6,7 @@ describe('page register', () => {
     cy.visit(Cypress.env('prod'))
     cy.verifyImage('[alt="Tricentis Demo Web Shop"]','/Themes/DefaultClean/Content/images/logo.png')
   })
-  it.skip('positive case', () => {
+  it('positive case', () => {
     cy.fixture('registerData.json').then(registers => {
       registers.valid.forEach((registerData) => {
         cy.verifyMenuHeader('.ico-register','Register')
