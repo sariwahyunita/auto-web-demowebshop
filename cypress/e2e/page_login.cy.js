@@ -7,7 +7,7 @@ describe('page login', () => {
     cy.verifyImage('[alt="Tricentis Demo Web Shop"]','/Themes/DefaultClean/Content/images/logo.png')
   })
   it('positive case', () => {
-    cy.fixture('loginData.json').then(logins => {
+    cy.fixture('registerData.json').then(logins => {
       logins.valid.forEach((loginData) => {
         cy.verifyMenuHeader('.ico-login','Log in')
         cy.clickMenuHeader('.ico-login')

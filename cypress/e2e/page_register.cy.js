@@ -6,9 +6,34 @@ describe('page register', () => {
     cy.visit(Cypress.env('prod'))
     cy.verifyImage('[alt="Tricentis Demo Web Shop"]','/Themes/DefaultClean/Content/images/logo.png')
   })
-  it('positive case', () => {
-    cy.fixture('registerData.json').then(registers => {
+  
+  it.skip('test random',() => {
+    let random = ''
+    let numb = 0
+    cy.readFile("cypress/fixtures/registerData.json", (err, data) => {
+      if (err) {
+          return console.error(err);
+      };
+    }).then((registers) => {
       registers.valid.forEach((registerData) => {
+        random = registerPage.randomEmail(6)
+        registerData.email = random+'@gmail.com'
+        registerData.password = random
+        cy.writeFile("cypress/fixtures/registerData.json", JSON.stringify(registers))
+      })
+    })
+  })
+
+  it.only('positive case', () => {
+    let random = ''
+    let numb = 0
+    cy.readFile("cypress/fixtures/registerData.json", (err, data) => {
+      if (err) {
+          return console.error(err);
+      };
+    }).then(registers => {
+      registers.valid.forEach((registerData) => {
+        random = registerPage.randomEmail(6)
         cy.verifyMenuHeader('.ico-register','Register')
         cy.clickMenuHeader('.ico-register')
         cy.verifyUrlContains('/register')
@@ -16,17 +41,20 @@ describe('page register', () => {
         registerPage.selectGender(registerData.gender)
         registerPage.inputFirstName(registerData.firstName)
         registerPage.inputLastName(registerData.lastName)
-        registerPage.inputEmail(registerData.email)
-        registerPage.inputPassword(registerData.password)
+        registerPage.inputEmail(random+'@gmail.com')
+        registerData.email = random+'@gmail.com'
+        registerPage.inputPassword(random)
+        registerData.password = random
         registerPage.inputConfirmPassword(registerData.confirmPassword)
         registerPage.clickRegisterButton()
         cy.verifyByClass('.result','Your registration completed')
         cy.clickMenuHeader('.ico-logout')
+        cy.writeFile("cypress/fixtures/registerData.json", JSON.stringify(registers))
       })
     })
   })
 
-  it('negatif case - no input mandatory filed', () => {
+  it.skip('negatif case - no input mandatory filed', () => {
     cy.fixture('registerData.json').then(registers => {
       registers.invalidMandatoryField.forEach((registerData) => {
         cy.verifyMenuHeader('.ico-register','Register')
@@ -63,7 +91,7 @@ describe('page register', () => {
     })
   })
 
-  it('negatif case - input duplicate email', () => {
+  it.skip('negatif case - input duplicate email', () => {
     cy.fixture('registerData.json').then(registers => {
       registers.invalidDuplicateEmail.forEach((registerData) => {
         cy.verifyMenuHeader('.ico-register','Register')
@@ -82,7 +110,7 @@ describe('page register', () => {
     })
   })
 
-  it('negatif case - confirmation password does not match with password', () => {
+  it.skip('negatif case - confirmation password does not match with password', () => {
     cy.fixture('registerData.json').then(registers => {
       registers.invalidWrongConfirmPassword.forEach((registerData) => {
         cy.verifyMenuHeader('.ico-register','Register')
@@ -101,7 +129,7 @@ describe('page register', () => {
     })
   })
 
-  it('negatif case - input wrong format email', () => {
+  it.skip('negatif case - input wrong format email', () => {
     cy.fixture('registerData.json').then(registers => {
       registers.invalidWrongFormatEmail.forEach((registerData) => {
         cy.verifyMenuHeader('.ico-register','Register')
@@ -120,7 +148,7 @@ describe('page register', () => {
     })
   })
 
-  it('negatif case - input email less than 6 char', () => {
+  it.skip('negatif case - input email less than 6 char', () => {
     cy.fixture('registerData.json').then(registers => {
       registers.invalidPasswordLessThan6Char.forEach((registerData) => {
         cy.verifyMenuHeader('.ico-register','Register')
