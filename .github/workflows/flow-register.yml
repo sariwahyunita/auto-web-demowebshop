@@ -1,8 +1,5 @@
 name: End-to-end register
-on: 
-  push:
-    paths:
-      - cypress/e2e/page_register.cy.js
+on: push
 jobs:
   cypress-run:
     runs-on: ubuntu-22.04
