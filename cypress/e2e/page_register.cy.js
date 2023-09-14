@@ -1,4 +1,4 @@
-// page - register
+// page - register 1
 import registerPage from '../support/page-objects/registerPage'
 describe('page register', () => {
   beforeEach(()=> {
