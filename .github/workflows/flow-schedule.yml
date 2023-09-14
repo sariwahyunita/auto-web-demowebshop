@@ -1,4 +1,4 @@
-name: End-to-end regressi
+name: End-to-end schedule
 on: 
   schedule:
     # runs tests every day at 12.00 PM WIB
@@ -11,7 +11,7 @@ jobs:
         uses: actions/checkout@v4
       # Install npm dependencies, cache them correctly
       # and run all Cypress tests
-      - name: Cypress run regressi
+      - name: Cypress run schedule
         uses: cypress-io/github-action@v6
         with:
           browser: chrome
