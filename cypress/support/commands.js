@@ -77,3 +77,8 @@ Cypress.Commands.add('inputField', (locator, value) => {
     }
 })
 
+Cypress.Commands.add('clickByTag', (locator,wording) => { 
+    cy.get(locator)
+    .contains(wording).click()
+})
+

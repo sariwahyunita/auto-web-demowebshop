@@ -1,0 +1,36 @@
+{
+    "valid": [
+        {
+            "email": "cc@mail.com",
+            "password": "cccccc"
+        },
+        {
+            "email": "cc@mail.com",
+            "password": "cccccc"
+        }
+    ],
+    "invalidPasswordOrEmailIncorrect": [
+        {
+            "email": "iqbaal@mail.com",
+            "password": "wrongiqbaal123"
+        },
+        {
+            "email": "wrongiqbaal@mail.com",
+            "password": "iqbaal123"
+        }
+    ],
+    "invalidFormatEmail": [
+        {
+            "email": "iqbaal",
+            "password": "wrongiqbaal123"
+        }
+    ],
+    "invalidEmptyEmailOrPassword": [
+        {
+            "email": null,
+            "password": null
+        }
+    ]
+
+}
+  

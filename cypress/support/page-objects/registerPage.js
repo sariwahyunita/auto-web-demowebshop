@@ -5,28 +5,29 @@ class registerPage {
         cy.selectRadioByValue('[type="radio"]', value)
     }
 
-    selectFirstName(value) {
+    inputFirstName(value) {
         cy.inputField('#FirstName',value)
     }
 
-    selectLastName(value) {
+    inputLastName(value) {
         cy.inputField('#LastName',value)
     }
 
-    selectEmail(value) {
+    inputEmail(value) {
         cy.inputField('#Email',value)
     }
 
-    selectPassword(value) {
+    inputPassword(value) {
         cy.inputField('#Password',value)
     }
 
-    selectConfirmPassword(value) {
+    inputConfirmPassword(value) {
         cy.inputField('#ConfirmPassword',value)
     }
 
     clickRegisterButton() {
       cy.get('#register-button').click()
-    }}
+    }
+}
   
-  export default new registerPage()
+export default new registerPage()
